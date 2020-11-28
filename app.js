@@ -18,7 +18,8 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
     
     .get('/login/', (req, res) => res.send('goss'))
     .get('/code/', (req, res) => {
- 
+        res.set({'Content-Type': 'text/plain; charset=utf-8'});
+        createReadStream(import.meta.url.substring(7)).pipe(res);
     })
     ;
 
